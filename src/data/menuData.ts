@@ -4,7 +4,7 @@ export interface MenuItem {
   description: string;
   emoji: string;
   comicWord: string;
-  color: string; // tailwind gradient
+  color: string;
 }
 
 export const menuItems: MenuItem[] = [
@@ -25,20 +25,28 @@ export const menuItems: MenuItem[] = [
     color: "from-yellow-900 to-orange-900",
   },
   {
+    id: "noodles",
+    name: "NOODLES",
+    description: "Stir-fried masala noodles — tangled like a web, just as satisfying.",
+    emoji: "🍜",
+    comicWord: "THWIP!",
+    color: "from-amber-900 to-yellow-900",
+  },
+  {
+    id: "american-sweet-corn",
+    name: "AMERICAN SWEET CORN",
+    description: "Buttery sweet corn tossed with spices. A hero-level snack.",
+    emoji: "🌽",
+    comicWord: "KAPOW!",
+    color: "from-yellow-800 to-orange-800",
+  },
+  {
     id: "masala-soda",
     name: "MASALA SODA",
     description: "Fizzy, tangy, ice-cold masala soda. Your web-slinging fuel.",
     emoji: "🥤",
     comicWord: "WHOOSH!",
     color: "from-blue-900 to-cyan-900",
-  },
-  {
-    id: "asian-salad",
-    name: "ASIAN SALAD",
-    description: "Fresh crunchy greens with an Asian kick. Light yet legendary.",
-    emoji: "🥗",
-    comicWord: "THWIP!",
-    color: "from-green-900 to-emerald-900",
   },
   {
     id: "carrot-halwa",

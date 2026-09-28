@@ -3,6 +3,7 @@ import CinematicIntro from "./components/CinematicIntro";
 import Hero from "./components/Hero";
 import MenuSection from "./components/MenuSection";
 import PriceExperience from "./components/PriceExperience";
+import CustomerForm from "./components/CustomerForm";
 import MissionDetails from "./components/MissionDetails";
 import SponsorSection from "./components/SponsorSection";
 import TeamSection from "./components/TeamSection";
@@ -37,6 +38,7 @@ export default function App() {
             <Hero />
             <MenuSection />
             <PriceExperience />
+            <CustomerForm />
             <MissionDetails />
             <TeamSection />
             <SponsorSection />

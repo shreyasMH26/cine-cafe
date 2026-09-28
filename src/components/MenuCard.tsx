@@ -6,16 +6,18 @@ import type { MenuItem } from "../data/menuData";
 const FOOD_EMOJIS: Record<string, string> = {
   "fried-rice": "🍚",
   "gobi": "🥦",
+  "noodles": "🍜",
+  "american-sweet-corn": "🌽",
   "masala-soda": "🥤",
-  "asian-salad": "🥗",
   "carrot-halwa": "🥕",
 };
 
 const DESCRIPTIONS: Record<string, string> = {
   "fried-rice": "Wok-tossed masala fried rice — smoky, spicy & heroic.",
   "gobi": "Crispy cauliflower bites seasoned with bold spices.",
+  "noodles": "Stir-fried masala noodles — tangled like a web, just as satisfying.",
+  "american-sweet-corn": "Buttery sweet corn tossed with spices. A hero-level snack.",
   "masala-soda": "Fizzy, tangy, ice-cold masala soda. Web-slinging fuel.",
-  "asian-salad": "Fresh crunchy greens with an Asian-inspired kick.",
   "carrot-halwa": "Rich warm halwa — the sweetest finale to your mission.",
 };
 

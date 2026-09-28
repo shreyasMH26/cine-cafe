@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import SpiderWebBackground from "./SpiderWebBackground";
 
-const ITEMS = ["FRIED RICE", "GOBI", "MASALA SODA", "ASIAN SALAD", "CARROT HALWA"];
+const ITEMS = ["FRIED RICE", "GOBI", "NOODLES", "AMERICAN SWEET CORN", "MASALA SODA", "CARROT HALWA"];
 
 export default function PriceExperience() {
   const ref = useRef(null);
