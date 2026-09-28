@@ -104,15 +104,27 @@ export default function Hero() {
         {/* Film strip top */}
         <div className="film-strip h-6 w-full mb-6 opacity-30" />
 
-        {/* Stall badge */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 mb-4 text-xs tracking-[0.3em] border border-[#E31E24]/50 text-[#E31E24]"
-        >
-          🕷️ TEAM DYNAMOS · STALL NO. 08
-        </motion.div>
+        {/* Stall badge & Sponsor badge */}
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-4">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-3 py-1.5 text-xs tracking-[0.3em] border border-[#E31E24]/50 text-[#E31E24] bg-black/40"
+          >
+            🕷️ TEAM DYNAMOS · STALL NO. 08
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white text-black rounded text-xs font-['Bebas_Neue',Impact,sans-serif] tracking-widest shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+          >
+            <span className="text-[10px] text-gray-500 font-semibold tracking-wider">POWERED BY</span>
+            <strong className="text-sm tracking-wider text-black font-bold">XTICH</strong>
+          </motion.div>
+        </div>
 
         {/* Main title */}
         <motion.h1
@@ -169,8 +181,26 @@ export default function Hero() {
           🕷️ ENTER THE CAFÉ
         </motion.button>
 
+        {/* XTICH Official Sponsor Presenter on Front Page */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.3, duration: 0.5 }}
+          className="mt-6 flex justify-center"
+        >
+          <div className="inline-flex items-center gap-3 px-4 py-2 bg-white rounded border-2 border-[#E31E24] shadow-[0_0_25px_rgba(255,255,255,0.35)]">
+            <span className="text-[10px] tracking-[0.25em] text-gray-500 font-bold">POWERED BY</span>
+            <span className="font-['Bebas_Neue',Impact,sans-serif] text-2xl tracking-[0.2em] text-black font-extrabold leading-none">
+              XTICH
+            </span>
+            <span className="text-[9px] tracking-wider px-2 py-0.5 bg-[#E31E24] text-white font-bold rounded">
+              OFFICIAL SPONSOR
+            </span>
+          </div>
+        </motion.div>
+
         {/* Film strip bottom */}
-        <div className="film-strip h-6 w-full mt-8 opacity-30" />
+        <div className="film-strip h-6 w-full mt-6 opacity-30" />
       </div>
 
       {/* Scroll indicator */}
