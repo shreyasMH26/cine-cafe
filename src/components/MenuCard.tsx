@@ -24,9 +24,10 @@ const DESCRIPTIONS: Record<string, string> = {
 interface Props {
   item: MenuItem;
   index: number;
+  total?: number;
 }
 
-export default function MenuCard({ item, index }: Props) {
+export default function MenuCard({ item, index, total }: Props) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
@@ -122,7 +123,7 @@ export default function MenuCard({ item, index }: Props) {
       <div className="p-4">
         {/* Comic panel number */}
         <div className="text-[10px] tracking-[0.4em] text-[#E31E24]/50 mb-1">
-          PANEL {String(index + 1).padStart(2, "0")} / 05
+          PANEL {String(index + 1).padStart(2, "0")} / {String(total || 6).padStart(2, "0")}
         </div>
 
         {/* Name */}

@@ -30,7 +30,7 @@ export default function MenuSection() {
         THWIP!
       </motion.div>
 
-      <div className="max-w-lg mx-auto px-4">
+      <div className="max-w-2xl mx-auto px-4">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -68,11 +68,11 @@ export default function MenuSection() {
           </div>
         </motion.div>
 
-        {/* Menu grid */}
+        {/* Menu grid - clean 2-column balanced grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {menuItems.map((item, i) => (
-            <div key={item.id} className={item.id === "carrot-halwa" ? "sm:col-span-2 sm:max-w-xs sm:mx-auto w-full" : ""}>
-              <MenuCard item={item} index={i} />
+            <div key={item.id} className="w-full">
+              <MenuCard item={item} index={i} total={menuItems.length} />
             </div>
           ))}
         </div>
