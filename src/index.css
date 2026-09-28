@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-spider-red: #E31E24;
+  --color-spider-blue: #0066CC;
+  --color-spider-dark: #0A0A0F;
+  --color-neon-red: #FF2233;
+  --color-neon-blue: #00AAFF;
+  --color-comic-yellow: #FFD700;
+
+  --font-family-display: "Bebas Neue", "Impact", "Arial Black", sans-serif;
+  --font-family-mono: "Courier New", monospace;
+}
+
+
+/* ── Base ── */
+* { box-sizing: border-box; }
+
+body {
+  background: #0A0A0F;
+  color: #ffffff;
+  font-family: 'Rajdhani', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ── Halftone overlay ── */
+.halftone {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 8px 8px;
+}
+
+/* ── Spider web SVG background ── */
+.web-bg {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cg fill='none' stroke='rgba(255,255,255,0.04)' stroke-width='0.5'%3E%3Ccircle cx='150' cy='150' r='30'/%3E%3Ccircle cx='150' cy='150' r='60'/%3E%3Ccircle cx='150' cy='150' r='90'/%3E%3Ccircle cx='150' cy='150' r='120'/%3E%3Cline x1='150' y1='30' x2='150' y2='270'/%3E%3Cline x1='30' y1='150' x2='270' y2='150'/%3E%3Cline x1='64' y1='64' x2='236' y2='236'/%3E%3Cline x1='236' y1='64' x2='64' y2='236'/%3E%3Cline x1='107' y1='30' x2='193' y2='270'/%3E%3Cline x1='30' y1='107' x2='270' y2='193'/%3E%3Cline x1='193' y1='30' x2='107' y2='270'/%3E%3Cline x1='30' y1='193' x2='270' y2='107'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 300px 300px;
+}
+
+/* ── Neon text ── */
+.neon-red {
+  text-shadow: 0 0 10px #FF2233, 0 0 20px #FF2233, 0 0 40px #E31E24;
+}
+
+.neon-blue {
+  text-shadow: 0 0 10px #00AAFF, 0 0 20px #00AAFF, 0 0 40px #0066CC;
+}
+
+/* ── Comic border ── */
+.comic-border {
+  border: 2px solid #E31E24;
+  box-shadow: 0 0 0 1px rgba(227,30,36,0.3), inset 0 0 20px rgba(0,102,204,0.1), 0 0 20px rgba(227,30,36,0.2);
+}
+
+/* ── Cinematic glow ── */
+.glow-red {
+  box-shadow: 0 0 30px rgba(227,30,36,0.4), 0 0 60px rgba(227,30,36,0.2);
+}
+.glow-blue {
+  box-shadow: 0 0 30px rgba(0,102,204,0.4), 0 0 60px rgba(0,102,204,0.2);
+}
+
+/* ── Scroll bar ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #0A0A0F; }
+::-webkit-scrollbar-thumb { background: #E31E24; border-radius: 2px; }
+
+/* ── Film strip ── */
+.film-strip {
+  background-image: repeating-linear-gradient(
+    to right,
+    transparent 0px,
+    transparent 18px,
+    rgba(255,255,255,0.08) 18px,
+    rgba(255,255,255,0.08) 22px
+  );
+}
+
+/* ── Speed lines ── */
+.speed-lines {
+  background-image: repeating-conic-gradient(
+    from 0deg at 50% 50%,
+    rgba(255,255,255,0.02) 0deg,
+    transparent 1deg,
+    transparent 10deg
+  );
+}
+
+/* ── Ticket perforations ── */
+.ticket-perfs {
+  background-image: radial-gradient(circle at center, #0A0A0F 5px, transparent 6px);
+  background-size: 20px 20px;
+  background-position: center;
+}
+
+/* ── Disable animations when reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Comic word styles ── */
+.comic-word {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  -webkit-text-stroke: 2px rgba(255,255,255,0.8);
+  color: #FFD700;
+  filter: drop-shadow(2px 2px 0 #E31E24) drop-shadow(-1px -1px 0 #0066CC);
+}
+
+/* ── Diagonal clip ── */
+.clip-diagonal {
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
+.clip-diagonal-reverse {
+  clip-path: polygon(0 0, 100% 15%, 100% 100%, 0 100%);
+}
