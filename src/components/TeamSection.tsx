@@ -89,6 +89,15 @@ export default function TeamSection() {
               </div>
               <div className="text-sm tracking-[0.4em] text-[#E31E24]">STALL NO. 08</div>
 
+              <div className="mt-4 flex flex-wrap justify-center gap-2 text-xs tracking-widest text-white/80">
+                <span className="px-3 py-1 bg-white/5 border border-white/10 rounded">
+                  LEAD: <strong className="text-[#E31E24]">TANISH.RD</strong>
+                </span>
+                <span className="px-3 py-1 bg-white/5 border border-white/10 rounded">
+                  LEAD: <strong className="text-[#00AAFF]">RACHANA PANDIT</strong>
+                </span>
+              </div>
+
               <div className="mt-6 flex items-center gap-3">
                 <div className="flex-1 h-px bg-gradient-to-r from-transparent to-[#E31E24]" />
                 <div className="text-[#E31E24] text-xs">◆</div>

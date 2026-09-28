@@ -10,9 +10,9 @@ interface CustomerEntry {
   torn: boolean;
 }
 
-const WHATSAPP_NUMBERS = [
-  { label: "Coordinator 1 (+91 95386 65959)", value: "919538665959" },
-  { label: "Coordinator 2 (+91 91085 40017)", value: "919108540017" },
+const COORDINATORS = [
+  { name: "Tanish.RD", phone: "+91 95386 65959", raw: "919538665959" },
+  { name: "Rachana Pandit", phone: "+91 91085 40017", raw: "919108540017" },
 ];
 
 export default function CustomerForm() {
@@ -21,8 +21,10 @@ export default function CustomerForm() {
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [torn, setTorn] = useState(true); // Default true since tickets are torn
-  const [targetNumber, setTargetNumber] = useState(WHATSAPP_NUMBERS[0].value);
+  const [torn, setTorn] = useState(true);
+  const [selectedCoord, setSelectedCoord] = useState(COORDINATORS[0].raw);
+
+  // Stored customer entries
   const [entries, setEntries] = useState<CustomerEntry[]>(() => {
     try {
       const saved = localStorage.getItem("cine_cafe_customers");
@@ -31,17 +33,44 @@ export default function CustomerForm() {
       return [];
     }
   });
+
+  // Live Token Counter: Now Serving
+  const [nowServing, setNowServing] = useState<number>(() => {
+    try {
+      const saved = localStorage.getItem("cine_cafe_now_serving");
+      return saved ? parseInt(saved, 10) : 1;
+    } catch {
+      return 1;
+    }
+  });
+
   const [lastAdded, setLastAdded] = useState<CustomerEntry | null>(null);
 
   useEffect(() => {
     try {
       localStorage.setItem("cine_cafe_customers", JSON.stringify(entries));
     } catch {
-      // ignore storage quota issues
+      // ignore
     }
   }, [entries]);
 
-  const createWhatsAppUrl = (entry: CustomerEntry, num: string) => {
+  useEffect(() => {
+    try {
+      localStorage.setItem("cine_cafe_now_serving", String(nowServing));
+    } catch {
+      // ignore
+    }
+  }, [nowServing]);
+
+  const activeCoordinator =
+    COORDINATORS.find((c) => c.raw === selectedCoord) || COORDINATORS[0];
+
+  const nextTokenNum = String(entries.length + 1).padStart(3, "0");
+  const nextToken = `CC-${nextTokenNum}`;
+  const nowServingStr = `CC-${String(nowServing).padStart(3, "0")}`;
+
+  const createWhatsAppUrl = (entry: CustomerEntry, coordRaw: string) => {
+    const coordObj = COORDINATORS.find((c) => c.raw === coordRaw) || COORDINATORS[0];
     const text =
       `🕷️ *THE CINE CAFÉ — TICKET REGISTRATION* 🎟️\n` +
       `━━━━━━━━━━━━━━━━━━━━\n` +
@@ -50,18 +79,17 @@ export default function CustomerForm() {
       `📱 *Phone:* ${entry.phone || "Not provided"}\n` +
       `✂️ *Ticket Status:* ${entry.torn ? "Torn & Verified ✅" : "Pending ⏳"}\n` +
       `🎪 *Stall:* Stall No. 08 (Team Dynamos)\n` +
+      `📞 *Coordinator:* ${coordObj.name}\n` +
       `🕒 *Time:* ${entry.time}\n` +
       `📍 *Location:* Bapuji Samudaya Bhavan, Davanagere\n` +
       `━━━━━━━━━━━━━━━━━━━━`;
-    return `https://wa.me/${num}?text=${encodeURIComponent(text)}`;
+    return `https://wa.me/${coordRaw}?text=${encodeURIComponent(text)}`;
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim()) return;
 
-    const tokenNum = String(entries.length + 1).padStart(3, "0");
-    const token = `CC-${tokenNum}`;
     const now = new Date();
     const timeStr = now.toLocaleTimeString("en-IN", {
       hour: "2-digit",
@@ -73,7 +101,7 @@ export default function CustomerForm() {
       id: Date.now(),
       name: name.trim().toUpperCase(),
       phone: phone.trim(),
-      token,
+      token: nextToken,
       time: timeStr,
       torn,
     };
@@ -83,8 +111,8 @@ export default function CustomerForm() {
     setName("");
     setPhone("");
 
-    // Automatically trigger WhatsApp redirect
-    const waUrl = createWhatsAppUrl(entry, targetNumber);
+    // Open WhatsApp to the selected coordinator
+    const waUrl = createWhatsAppUrl(entry, selectedCoord);
     window.open(waUrl, "_blank", "noopener,noreferrer");
   };
 
@@ -110,9 +138,9 @@ export default function CustomerForm() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="text-center mb-8"
+          className="text-center mb-6"
         >
-          <div className="text-xs tracking-[0.5em] text-[#E31E24] mb-2">🎟️ TICKET STUB</div>
+          <div className="text-xs tracking-[0.5em] text-[#E31E24] mb-2">🎟️ TICKET STUB & QUEUE</div>
           <h2
             className="font-['Bebas_Neue',Impact,sans-serif] text-4xl sm:text-5xl tracking-widest text-white"
             style={{ textShadow: "0 0 20px rgba(227,30,36,0.5)" }}
@@ -120,11 +148,95 @@ export default function CustomerForm() {
             CUSTOMER <span style={{ color: "#E31E24" }}>DETAILS</span>
           </h2>
           <p className="mt-2 text-sm text-white/50 tracking-wider">
-            Fill in after tearing ticket — automatically notifies team on WhatsApp 💬
+            Fill in after tearing ticket — sends alert directly to Tanish.RD or Rachana Pandit
           </p>
         </motion.div>
 
-        {/* Form card styled as a torn ticket stub */}
+        {/* ═══════════════ TOKEN COUNTER HUD ═══════════════ */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={inView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ delay: 0.1, duration: 0.5 }}
+          className="mb-6 p-4 rounded relative overflow-hidden"
+          style={{
+            background: "linear-gradient(135deg, rgba(227,30,36,0.12), rgba(0,102,204,0.12))",
+            border: "1.5px solid rgba(227,30,36,0.5)",
+            boxShadow: "0 0 25px rgba(227,30,36,0.2), inset 0 0 15px rgba(0,102,204,0.1)",
+          }}
+        >
+          {/* Header row */}
+          <div className="flex items-center justify-between border-b border-white/10 pb-2 mb-3">
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#E31E24] animate-ping" />
+              <span className="text-[11px] font-['Bebas_Neue',Impact,sans-serif] tracking-[0.3em] text-[#E31E24]">
+                LIVE TOKEN COUNTER
+              </span>
+            </div>
+            <span className="text-[10px] tracking-widest text-white/40 font-mono">
+              STALL 08
+            </span>
+          </div>
+
+          <div className="grid grid-cols-2 gap-3 text-center">
+            {/* Box 1: Now Serving */}
+            <div
+              className="p-3 bg-black/60 rounded border border-[#00AAFF]/40 flex flex-col items-center justify-center relative"
+              style={{ boxShadow: "inset 0 0 15px rgba(0,170,255,0.15)" }}
+            >
+              <span className="text-[10px] tracking-[0.3em] text-[#00AAFF] font-bold mb-1">
+                NOW SERVING
+              </span>
+              <span
+                className="font-['Bebas_Neue',Impact,sans-serif] text-4xl sm:text-5xl text-white tracking-widest neon-blue"
+                style={{ color: "#00AAFF", textShadow: "0 0 20px rgba(0,170,255,0.8)" }}
+              >
+                {nowServingStr}
+              </span>
+
+              {/* Counter Operator Controls */}
+              <div className="mt-2 flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setNowServing((prev) => Math.max(1, prev - 1))}
+                  className="px-2 py-0.5 text-xs bg-white/10 hover:bg-white/20 text-white rounded font-mono border border-white/20"
+                  title="Previous token"
+                >
+                  ◀
+                </button>
+                <span className="text-[9px] text-white/40 tracking-wider">COUNTER</span>
+                <button
+                  type="button"
+                  onClick={() => setNowServing((prev) => prev + 1)}
+                  className="px-2 py-0.5 text-xs bg-[#00AAFF]/30 hover:bg-[#00AAFF]/50 text-[#00AAFF] rounded font-mono border border-[#00AAFF]/50 font-bold"
+                  title="Next token"
+                >
+                  ▶
+                </button>
+              </div>
+            </div>
+
+            {/* Box 2: Total Registered / Next Token */}
+            <div
+              className="p-3 bg-black/60 rounded border border-[#E31E24]/40 flex flex-col items-center justify-center"
+              style={{ boxShadow: "inset 0 0 15px rgba(227,30,36,0.15)" }}
+            >
+              <span className="text-[10px] tracking-[0.3em] text-[#E31E24] font-bold mb-1">
+                NEXT TO ISSUE
+              </span>
+              <span
+                className="font-['Bebas_Neue',Impact,sans-serif] text-4xl sm:text-5xl tracking-widest neon-red"
+                style={{ color: "#E31E24", textShadow: "0 0 20px rgba(227,30,36,0.8)" }}
+              >
+                {nextToken}
+              </span>
+              <div className="mt-2 text-[10px] text-white/60 tracking-wider">
+                Total Registered: <span className="font-bold text-white">{entries.length}</span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* ═══════════════ FORM CARD ═══════════════ */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -136,7 +248,7 @@ export default function CustomerForm() {
             boxShadow: "0 0 40px rgba(227,30,36,0.15)",
           }}
         >
-          {/* Perforated top edge (torn look) */}
+          {/* Perforated top edge */}
           <div
             className="h-4 w-full"
             style={{
@@ -156,7 +268,9 @@ export default function CustomerForm() {
               <div className="font-['Bebas_Neue',Impact,sans-serif] text-lg tracking-widest text-white">
                 THE CINE CAFÉ
               </div>
-              <div className="text-[10px] tracking-[0.4em] text-[#E31E24]/70">STALL NO. 08 · TEAM DYNAMOS</div>
+              <div className="text-[10px] tracking-[0.4em] text-[#E31E24]/70">
+                STALL NO. 08 · TEAM DYNAMOS
+              </div>
             </div>
             <div className="text-3xl" style={{ filter: "drop-shadow(0 0 8px rgba(227,30,36,0.6))" }}>
               🕷️
@@ -165,7 +279,7 @@ export default function CustomerForm() {
 
           {/* Form */}
           <form onSubmit={handleSubmit} className="p-5 space-y-4">
-            {/* Name */}
+            {/* Customer Name */}
             <div>
               <label className="block text-[10px] tracking-[0.4em] text-[#E31E24]/80 mb-1.5 font-bold">
                 CUSTOMER NAME *
@@ -208,25 +322,38 @@ export default function CustomerForm() {
               />
             </div>
 
-            {/* Target WhatsApp recipient selection */}
+            {/* Coordinator Selector: Tanish.RD vs Rachana Pandit */}
             <div>
-              <label className="block text-[10px] tracking-[0.4em] text-white/50 mb-1.5">
-                SEND WHATSAPP ALERT TO
+              <label className="block text-[10px] tracking-[0.4em] text-white/70 mb-1.5 font-semibold">
+                NOTIFY COORDINATOR VIA WHATSAPP *
               </label>
-              <select
-                value={targetNumber}
-                onChange={(e) => setTargetNumber(e.target.value)}
-                className="w-full px-4 py-2.5 bg-black/70 text-white text-xs tracking-wider outline-none font-['Rajdhani',sans-serif] border border-white/20"
-              >
-                {WHATSAPP_NUMBERS.map((n) => (
-                  <option key={n.value} value={n.value} className="bg-black text-white">
-                    {n.label}
-                  </option>
-                ))}
-              </select>
+              <div className="grid grid-cols-2 gap-2">
+                {COORDINATORS.map((coord) => {
+                  const isSelected = selectedCoord === coord.raw;
+                  return (
+                    <button
+                      key={coord.raw}
+                      type="button"
+                      onClick={() => setSelectedCoord(coord.raw)}
+                      className={`p-2.5 text-left border rounded transition-all flex flex-col ${
+                        isSelected
+                          ? "border-[#25D366] bg-[#25D366]/15 text-white"
+                          : "border-white/15 bg-black/40 text-white/50 hover:border-white/30"
+                      }`}
+                    >
+                      <span className="font-['Bebas_Neue',Impact,sans-serif] text-base tracking-wider text-white">
+                        {coord.name}
+                      </span>
+                      <span className="text-[10px] text-white/60 tracking-wider">
+                        {coord.phone}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
 
-            {/* Torn confirmation toggle */}
+            {/* Torn confirmation */}
             <div
               className="flex items-center gap-3 cursor-pointer select-none py-1"
               onClick={() => setTorn((t) => !t)}
@@ -240,7 +367,9 @@ export default function CustomerForm() {
               >
                 {torn && <span className="text-[#E31E24] text-xs font-bold">✓</span>}
               </div>
-              <span className="text-sm text-white/70 tracking-wider">Ticket has been torn ✂️</span>
+              <span className="text-sm text-white/70 tracking-wider">
+                Ticket has been torn & verified ✂️
+              </span>
             </div>
 
             {/* Submit */}
@@ -255,16 +384,16 @@ export default function CustomerForm() {
                 boxShadow: "0 0 20px rgba(37,211,102,0.3)",
               }}
             >
-              <span>💬 REGISTER & SEND TO WHATSAPP</span>
+              <span>💬 REGISTER & SEND TO {activeCoordinator.name.toUpperCase()}</span>
             </motion.button>
 
             <p className="text-[11px] text-center text-white/40 tracking-wider">
-              Tapping will register token and open WhatsApp with formatted details
+              Assigns token <span className="text-white font-bold">{nextToken}</span> and opens WhatsApp directly
             </p>
           </form>
         </motion.div>
 
-        {/* Success confirmation */}
+        {/* ═══════════════ SUCCESS BANNER ═══════════════ */}
         <AnimatePresence>
           {lastAdded && (
             <motion.div
@@ -272,7 +401,7 @@ export default function CustomerForm() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: -10 }}
               transition={{ type: "spring", stiffness: 200 }}
-              className="mt-6 p-5 relative overflow-hidden"
+              className="mt-6 p-5 relative overflow-hidden rounded"
               style={{
                 background: "linear-gradient(135deg, rgba(37,211,102,0.15), rgba(7,94,84,0.9))",
                 border: "1.5px solid #25D366",
@@ -283,7 +412,7 @@ export default function CustomerForm() {
                 <div className="text-4xl">✅</div>
                 <div className="flex-1">
                   <div className="text-[10px] tracking-[0.4em] text-[#25D366] font-bold mb-1">
-                    CUSTOMER REGISTERED & READY TO SEND
+                    CUSTOMER REGISTERED & TOKEN ISSUED
                   </div>
                   <div className="font-['Bebas_Neue',Impact,sans-serif] text-3xl text-white tracking-wider">
                     {lastAdded.name}
@@ -302,27 +431,27 @@ export default function CustomerForm() {
                     <div className="text-xs text-white/40">{lastAdded.time}</div>
                   </div>
 
-                  {/* Manual WhatsApp click buttons in case popup was blocked */}
+                  {/* Fallback WhatsApp Buttons */}
                   <div className="mt-4 pt-3 border-t border-white/10 flex flex-col gap-2">
-                    <span className="text-[10px] tracking-wider text-white/50">
-                      If WhatsApp didn't open automatically:
+                    <span className="text-[10px] tracking-wider text-white/60">
+                      Send notification directly to:
                     </span>
                     <div className="flex flex-wrap gap-2">
                       <a
-                        href={createWhatsAppUrl(lastAdded, WHATSAPP_NUMBERS[0].value)}
+                        href={createWhatsAppUrl(lastAdded, COORDINATORS[0].raw)}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#25D366] text-black font-semibold text-xs tracking-wider rounded"
                       >
-                        💬 Send to 95386 65959
+                        💬 Tanish.RD ({COORDINATORS[0].phone})
                       </a>
                       <a
-                        href={createWhatsAppUrl(lastAdded, WHATSAPP_NUMBERS[1].value)}
+                        href={createWhatsAppUrl(lastAdded, COORDINATORS[1].raw)}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#128C7E] text-white font-semibold text-xs tracking-wider rounded"
                       >
-                        💬 Send to 91085 40017
+                        💬 Rachana Pandit ({COORDINATORS[1].phone})
                       </a>
                     </div>
                   </div>
@@ -332,7 +461,7 @@ export default function CustomerForm() {
           )}
         </AnimatePresence>
 
-        {/* Customer log */}
+        {/* ═══════════════ CUSTOMER LOG ═══════════════ */}
         {entries.length > 0 && (
           <motion.div
             initial={{ opacity: 0 }}
@@ -341,7 +470,7 @@ export default function CustomerForm() {
           >
             <div className="flex items-center justify-between mb-3">
               <div className="text-[10px] tracking-[0.5em] text-white/50 font-bold">
-                REGISTERED TODAY — {entries.length} CUSTOMER{entries.length !== 1 ? "S" : ""}
+                TOKEN LOG — {entries.length} REGISTERED
               </div>
               <button
                 type="button"
@@ -353,7 +482,7 @@ export default function CustomerForm() {
                 }}
                 className="text-[10px] tracking-wider text-red-400/60 hover:text-red-400 underline"
               >
-                Clear list
+                Clear log
               </button>
             </div>
 
@@ -364,7 +493,7 @@ export default function CustomerForm() {
               {entries.map((entry) => (
                 <div
                   key={entry.id}
-                  className="flex items-center justify-between px-4 py-2.5"
+                  className="flex items-center justify-between px-4 py-2.5 rounded"
                   style={{
                     background: "rgba(255,255,255,0.03)",
                     border: "1px solid rgba(255,255,255,0.08)",
@@ -385,7 +514,7 @@ export default function CustomerForm() {
                   <div className="flex items-center gap-3">
                     <span className="text-xs text-white/30">{entry.time}</span>
                     <a
-                      href={createWhatsAppUrl(entry, targetNumber)}
+                      href={createWhatsAppUrl(entry, selectedCoord)}
                       target="_blank"
                       rel="noopener noreferrer"
                       title="Resend to WhatsApp"
