@@ -8,7 +8,7 @@ const FOOD_EMOJIS: Record<string, string> = {
   "gobi": "🥦",
   "noodles": "🍜",
   "american-sweet-corn": "🌽",
-  "masala-soda": "🥤",
+  "mocktail": "🍹",
   "carrot-halwa": "🥕",
 };
 
@@ -17,7 +17,7 @@ const DESCRIPTIONS: Record<string, string> = {
   "gobi": "Crispy cauliflower bites seasoned with bold spices.",
   "noodles": "Stir-fried masala noodles — tangled like a web, just as satisfying.",
   "american-sweet-corn": "Buttery sweet corn tossed with spices. A hero-level snack.",
-  "masala-soda": "Fizzy, tangy, ice-cold masala soda. Web-slinging fuel.",
+  "mocktail": "A chilled, vibrant mocktail — colourful as the comics, refreshing as a web-swing.",
   "carrot-halwa": "Rich warm halwa — the sweetest finale to your mission.",
 };
 
