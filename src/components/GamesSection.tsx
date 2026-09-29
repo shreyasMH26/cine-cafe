@@ -236,29 +236,6 @@ export default function GamesSection() {
           })}
         </div>
 
-        {/* Counter Zone Banner */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.6, duration: 0.5 }}
-          className="mt-10 p-5 rounded text-center relative overflow-hidden border border-[#E31E24]/50"
-          style={{
-            background: "linear-gradient(135deg, rgba(227,30,36,0.1), rgba(0,102,204,0.1))",
-            boxShadow: "0 0 30px rgba(227,30,36,0.15)",
-          }}
-        >
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <span className="text-3xl">🎪</span>
-            <div>
-              <span className="font-['Bebas_Neue',Impact,sans-serif] text-xl sm:text-2xl text-white tracking-widest block">
-                FREE TO PLAY WITH EVERY ₹199 TICKET!
-              </span>
-              <p className="text-xs text-white/60 tracking-wider">
-                Visit Stall No. 08, show your token pass, and play while your hot food is served!
-              </p>
-            </div>
-          </div>
-        </motion.div>
       </div>
 
       {/* Bottom panel border */}
