@@ -148,7 +148,7 @@ export default function PriceExperience() {
               transition={{ delay: 0.9 }}
               className="flex justify-center gap-6 mt-4 text-xs tracking-[0.3em] text-white/50"
             >
-              {["1 TICKET", "1 ENTRY", "1 MEAL"].map((t) => (
+              {["1 TICKET", "1 ENTRY", "1 MEAL", "FUN GAMES"].map((t) => (
                 <span key={t} className="flex flex-col items-center gap-1">
                   <span className="text-[#E31E24] text-xl">✦</span>
                   {t}

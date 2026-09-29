@@ -398,7 +398,7 @@ export default function CustomerForm() {
 
                   <p className="mt-3 text-xs text-white/80 leading-relaxed">
                     ✨ Show this token <strong className="text-white">({myOrder.token})</strong> at{" "}
-                    <strong>Stall No. 08</strong> to collect your hot meal pass!
+                    <strong>Stall No. 08</strong>, play our counter games (Mr. Bean, Coin Balance, Fill The Circle) & collect your meal!
                   </p>
 
                   {/* Fallback WhatsApp Buttons */}
