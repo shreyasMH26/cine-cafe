@@ -30,9 +30,11 @@ export default function SponsorSection() {
           transition={{ duration: 0.5 }}
         >
           {/* Label */}
-          <p className="text-xs tracking-[0.5em] text-gray-400 mb-2">OFFICIAL EVENT SPONSOR</p>
+          <div className="text-xs tracking-[0.5em] text-[#E31E24] font-semibold mb-2">
+            ✦ PARTNER ✦
+          </div>
           <p
-            className="font-['Bebas_Neue',Impact,sans-serif] text-2xl tracking-[0.4em] text-gray-700 mb-8"
+            className="font-['Bebas_Neue',Impact,sans-serif] text-4xl tracking-[0.35em] text-gray-800 mb-8"
           >
             POWERED BY
           </p>
@@ -43,7 +45,7 @@ export default function SponsorSection() {
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.2, type: "spring", stiffness: 120 }}
             whileHover={{ scale: 1.05 }}
-            className="inline-flex items-center justify-center px-10 py-8 bg-white"
+            className="inline-flex items-center justify-center px-12 py-8 bg-white"
             style={{
               border: "2px solid #E31E24",
               boxShadow: "4px 4px 0 #E31E24, -2px -2px 0 #0066CC",
@@ -52,12 +54,11 @@ export default function SponsorSection() {
             {/* XTICH logo placeholder — replace <img> src with actual logo */}
             <div className="flex flex-col items-center gap-1">
               <div
-                className="font-['Bebas_Neue',Impact,sans-serif] text-5xl tracking-[0.3em] text-black"
-                style={{ letterSpacing: "0.1em" }}
+                className="font-['Bebas_Neue',Impact,sans-serif] text-6xl tracking-[0.2em] text-black"
+                style={{ letterSpacing: "0.15em" }}
               >
                 XTICH
               </div>
-              <div className="text-xs tracking-[0.5em] text-gray-500">— OFFICIAL SPONSOR —</div>
             </div>
             {/*
               TO USE REAL LOGO:
@@ -66,8 +67,8 @@ export default function SponsorSection() {
             */}
           </motion.div>
 
-          <p className="mt-6 text-xs text-gray-400 tracking-wider">
-            Making great events possible.
+          <p className="mt-6 text-xs text-gray-500 tracking-wider">
+            Powering Web Bites · Team Dynamos
           </p>
         </motion.div>
       </div>

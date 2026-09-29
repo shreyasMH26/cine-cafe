@@ -142,19 +142,16 @@ export default function CinematicIntro({ onComplete }: Props) {
                   transition={{ duration: 0.4, delay: 0.2 }}
                   className="mt-6 flex flex-col items-center gap-3"
                 >
-                  {/* XTICH Opening Sponsor Lockup */}
+                  {/* XTICH Opening Lockup */}
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.1, duration: 0.3 }}
-                    className="inline-flex items-center gap-2 px-3 py-1 bg-white text-black rounded shadow-[0_0_20px_rgba(255,255,255,0.4)]"
+                    className="inline-flex items-center gap-2 px-4 py-1.5 bg-white text-black rounded shadow-[0_0_20px_rgba(255,255,255,0.4)]"
                   >
-                    <span className="text-[10px] text-gray-500 font-bold tracking-wider">POWERED BY</span>
-                    <span className="font-['Bebas_Neue',Impact,sans-serif] text-base font-bold text-black tracking-widest">
+                    <span className="text-xs text-gray-600 font-bold tracking-wider">POWERED BY</span>
+                    <span className="font-['Bebas_Neue',Impact,sans-serif] text-xl font-bold text-black tracking-widest leading-none">
                       XTICH
-                    </span>
-                    <span className="text-[9px] bg-[#E31E24] text-white px-1.5 py-0.5 rounded font-bold tracking-wider">
-                      OFFICIAL SPONSOR
                     </span>
                   </motion.div>
 

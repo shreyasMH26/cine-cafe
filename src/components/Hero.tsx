@@ -181,20 +181,17 @@ export default function Hero() {
           🕷️ ENTER THE CAFÉ
         </motion.button>
 
-        {/* XTICH Official Sponsor Presenter on Front Page */}
+        {/* XTICH Presenter on Front Page */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.3, duration: 0.5 }}
           className="mt-6 flex justify-center"
         >
-          <div className="inline-flex items-center gap-3 px-4 py-2 bg-white rounded border-2 border-[#E31E24] shadow-[0_0_25px_rgba(255,255,255,0.35)]">
-            <span className="text-[10px] tracking-[0.25em] text-gray-500 font-bold">POWERED BY</span>
-            <span className="font-['Bebas_Neue',Impact,sans-serif] text-2xl tracking-[0.2em] text-black font-extrabold leading-none">
+          <div className="inline-flex items-center gap-3 px-5 py-2.5 bg-white rounded border-2 border-[#E31E24] shadow-[0_0_25px_rgba(255,255,255,0.35)]">
+            <span className="text-xs tracking-[0.25em] text-gray-600 font-bold">POWERED BY</span>
+            <span className="font-['Bebas_Neue',Impact,sans-serif] text-3xl tracking-[0.2em] text-black font-extrabold leading-none">
               XTICH
-            </span>
-            <span className="text-[9px] tracking-wider px-2 py-0.5 bg-[#E31E24] text-white font-bold rounded">
-              OFFICIAL SPONSOR
             </span>
           </div>
         </motion.div>
