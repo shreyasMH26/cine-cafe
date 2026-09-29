@@ -58,4 +58,4 @@ export const menuItems: MenuItem[] = [
   },
 ];
 
-export const MENU_URL = "https://cinecafe.teamdynamos.in";
+export const MENU_URL = "https://webbites.teamdynamos.in";

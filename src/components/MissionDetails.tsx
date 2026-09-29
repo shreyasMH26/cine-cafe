@@ -9,7 +9,7 @@ const details = [
     value: "BAPUJI SAMUDAYA BHAVAN\nSHAMANUR ROAD\nDAVANAGERE",
     icon: "📍",
   },
-  { label: "STALL", value: "THE CINE CAFÉ\nSTALL NO. 08", icon: "🎪" },
+  { label: "STALL", value: "WEB BITES\nSTALL NO. 08", icon: "🎪" },
 ];
 
 export default function MissionDetails() {
@@ -89,7 +89,7 @@ export default function MissionDetails() {
             <span
               className="font-['Bebas_Neue',Impact,sans-serif] text-sm tracking-[0.4em] text-[#0066CC]"
             >
-              S.H.I.E.L.D. MISSION FILE — OPERATION CINE CAFÉ
+              S.H.I.E.L.D. MISSION FILE — OPERATION WEB BITES
             </span>
           </div>
 

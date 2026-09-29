@@ -116,7 +116,7 @@ export default function CinematicIntro({ onComplete }: Props) {
                   className="font-['Bebas_Neue',Impact,sans-serif] text-6xl sm:text-8xl tracking-widest neon-red"
                   style={{ color: "#E31E24" }}
                 >
-                  THE CINE CAFÉ
+                  WEB BITES
                 </motion.h1>
               )}
             </AnimatePresence>

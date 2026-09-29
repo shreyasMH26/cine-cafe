@@ -94,12 +94,12 @@ export default function CustomerForm() {
     );
 
     const text =
-      `🕷️ *THE CINE CAFÉ — NEW FOOD ORDER* 🎟️\n` +
+      `🕷️ *WEB BITES — NEW FOOD ORDER* 🎟️\n` +
       `━━━━━━━━━━━━━━━━━━━━\n` +
       `🎫 *Order Token:* ${entry.token}\n` +
       `👤 *Customer Name:* ${entry.name}\n` +
       `📱 *Customer Phone:* ${entry.phone || "Not provided"}\n` +
-      `🍽️ *Meal Package:* The Complete Cine Café Experience (₹199)\n` +
+      `🍽️ *Meal Package:* The Complete Web Bites Experience (₹199)\n` +
       `🍱 *Items Ordered:*\n${itemsList}\n` +
       `✂️ *Ticket Status:* Torn & Verified ✅\n` +
       `🎪 *Stall:* Stall No. 08 (Team Dynamos)\n` +
@@ -247,7 +247,7 @@ export default function CustomerForm() {
           >
             <div>
               <div className="font-['Bebas_Neue',Impact,sans-serif] text-xl tracking-widest text-white">
-                THE CINE CAFÉ · MEAL PASS
+                WEB BITES · MEAL PASS
               </div>
               <div className="text-[10px] tracking-[0.3em] text-[#E31E24]">
                 1 TICKET · 1 ENTRY · ₹199 COMPLETE MEAL

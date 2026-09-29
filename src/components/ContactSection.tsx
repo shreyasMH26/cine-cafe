@@ -62,7 +62,7 @@ export default function ContactSection() {
                   </a>
                   <a
                     href={`https://wa.me/${coord.raw}?text=${encodeURIComponent(
-                      "Hello! I am inquiring about The Cine Café (Stall 08) 🕷️"
+                      "Hello! I am inquiring about Web Bites (Stall 08) 🕷️"
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"

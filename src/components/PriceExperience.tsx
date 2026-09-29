@@ -52,7 +52,7 @@ export default function PriceExperience() {
           transition={{ delay: 0.2 }}
           className="text-[#E31E24] tracking-[0.5em] text-xs mb-6"
         >
-          🎟️ THE COMPLETE CINE CAFÉ EXPERIENCE
+          🎟️ THE COMPLETE WEB BITES EXPERIENCE
         </motion.div>
 
         {/* Ticket container */}
@@ -205,7 +205,7 @@ export default function PriceExperience() {
               style={{ boxShadow: "0 0 8px #E31E24" }}
             />
             <div className="mt-2 text-center font-mono text-xs text-white/30 tracking-widest">
-              CINECAFE-2026-STALL08
+              WEBBITES-2026-STALL08
             </div>
           </div>
         </motion.div>

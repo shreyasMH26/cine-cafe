@@ -1,32 +1,38 @@
-# React + TypeScript + Vite
+# 🕷️ Web Bites — Small Bites, Big Blockbuster
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+**Team Dynamos · Stall No. 08**  
+A premium Spider-Man / comic-book themed digital food menu website with integrated order notifications via WhatsApp.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🍽️ The ₹199 Complete Experience
 
-## React Compiler
+1 Ticket · 1 Entry · 1 Meal (Includes all 6 items):
+1. **Fried Rice** 🍚
+2. **Gobi** 🥦
+3. **Noodles** 🍜
+4. **American Sweet Corn** 🌽
+5. **Mocktail** 🍹
+6. **Carrot Halwa** 🥕
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the Oxlint configuration
+## 🚀 Tech Stack
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+- **React 19 + TypeScript + Vite**
+- **Tailwind CSS v4**
+- **Framer Motion** (cinematic transitions, web effects)
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+---
+
+## 🛠️ Development
+
+```bash
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Build for production:
+```bash
+npm run build
+```

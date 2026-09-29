@@ -42,7 +42,7 @@ export default function MenuSection() {
           <div className="film-strip h-5 mb-6 opacity-40" />
 
           <div className="text-[#E31E24] tracking-[0.5em] text-xs mb-3 font-semibold">
-            🕷️ THE CINE CAFÉ MENU
+            🕷️ WEB BITES MENU
           </div>
 
           <h2

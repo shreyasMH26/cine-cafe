@@ -134,9 +134,9 @@ export default function Hero() {
           className="font-['Bebas_Neue',Impact,sans-serif] text-[clamp(3.5rem,18vw,8rem)] leading-none tracking-wider"
           style={{ color: "#E31E24", textShadow: "0 0 40px rgba(227,30,36,0.6), 0 0 80px rgba(227,30,36,0.3)" }}
         >
-          THE CINE
+          WEB
           <br />
-          CAFÉ
+          BITES
         </motion.h1>
 
         {/* Subtitle */}

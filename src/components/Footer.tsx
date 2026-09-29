@@ -14,7 +14,7 @@ export default function Footer() {
         <div
           className="font-['Bebas_Neue',Impact,sans-serif] text-2xl tracking-[0.4em] text-white/60"
         >
-          🕷️ THE CINE CAFÉ
+          🕷️ WEB BITES
         </div>
         <p className="text-xs tracking-[0.4em] text-white/30">SMALL BITES · BIG BLOCKBUSTER</p>
         <p className="text-xs text-white/20">
