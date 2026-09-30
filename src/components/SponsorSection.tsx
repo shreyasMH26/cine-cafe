@@ -9,72 +9,78 @@ export default function SponsorSection() {
     <section
       ref={ref}
       className="relative py-20 overflow-hidden"
-      style={{ background: "#F5F5F5" }}
+      style={{ background: "#08080C" }}
     >
       {/* Top comic panel border */}
-      <div className="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-[#E31E24] via-[#0066CC] to-[#E31E24]" />
+      <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-[#E31E24] via-[#0066CC] to-[#E31E24]" />
 
-      {/* Speed-line stripes */}
+      {/* Spider web background */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.03]"
+        className="absolute inset-0 pointer-events-none opacity-[0.05]"
         style={{
-          backgroundImage: "repeating-linear-gradient(-45deg, #000 0, #000 1px, transparent 0, transparent 50%)",
-          backgroundSize: "6px 6px",
+          backgroundImage: "radial-gradient(#E31E24 1px, transparent 1px)",
+          backgroundSize: "20px 20px",
         }}
       />
 
-      <div className="max-w-sm mx-auto px-6 text-center">
+      <div className="max-w-md mx-auto px-6 text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
         >
-          {/* Label */}
-          <div className="text-xs tracking-[0.5em] text-[#E31E24] font-semibold mb-2">
-            ✦ PARTNER ✦
+          {/* Official Badge Header */}
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-950/60 border border-[#E31E24]/60 text-[#E31E24] rounded-full text-xs font-bold tracking-[0.3em] uppercase mb-4 shadow-[0_0_15px_rgba(227,30,36,0.2)]">
+            ★ OFFICIAL SPONSOR ★
           </div>
-          <p
-            className="font-['Bebas_Neue',Impact,sans-serif] text-4xl tracking-[0.35em] text-gray-800 mb-8"
-          >
-            POWERED BY
+
+          <h2 className="font-['Bebas_Neue',Impact,sans-serif] text-4xl sm:text-5xl tracking-[0.25em] text-white mb-2">
+            POWERED BY <span className="text-[#E31E24]">XTICH</span>
+          </h2>
+          <p className="text-gray-400 text-xs tracking-widest uppercase mb-8">
+            Fueling The Ultimate Cinematic Feast Experience
           </p>
 
-          {/* Logo container */}
+          {/* Official Logo Card from Physical Banner & Ticket */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.85 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.2, type: "spring", stiffness: 120 }}
-            whileHover={{ scale: 1.05 }}
-            className="inline-flex items-center justify-center px-12 py-8 bg-white"
-            style={{
-              border: "2px solid #E31E24",
-              boxShadow: "4px 4px 0 #E31E24, -2px -2px 0 #0066CC",
-            }}
+            whileHover={{ scale: 1.04 }}
+            className="relative inline-block p-4 sm:p-6 bg-black rounded-xl border-2 border-[#E31E24] shadow-[0_0_35px_rgba(227,30,36,0.4)]"
           >
-            {/* XTICH logo placeholder — replace <img> src with actual logo */}
-            <div className="flex flex-col items-center gap-1">
-              <div
-                className="font-['Bebas_Neue',Impact,sans-serif] text-6xl tracking-[0.2em] text-black"
-                style={{ letterSpacing: "0.15em" }}
-              >
-                XTICH
-              </div>
+            {/* Film strip edge decors */}
+            <div className="absolute top-1 left-2 right-2 h-1.5 flex justify-between opacity-30">
+              <span className="w-1.5 h-1.5 bg-white rounded-xs"></span>
+              <span className="w-1.5 h-1.5 bg-white rounded-xs"></span>
+              <span className="w-1.5 h-1.5 bg-white rounded-xs"></span>
+              <span className="w-1.5 h-1.5 bg-white rounded-xs"></span>
+              <span className="w-1.5 h-1.5 bg-white rounded-xs"></span>
             </div>
-            {/*
-              TO USE REAL LOGO:
-              Replace the div above with:
-              <img src="/assets/xtich-logo.png" alt="XTICH" className="h-16 object-contain" />
-            */}
+
+            <div className="my-2">
+              <img
+                src="/assets/xtich-official-card.png"
+                alt="XTICH Official Sponsor"
+                className="max-h-20 sm:max-h-24 w-auto object-contain mx-auto rounded drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]"
+                loading="eager"
+              />
+            </div>
+
+            <div className="mt-3 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-gray-400 font-mono">
+              <span className="text-[#00AAFF]">✦ TECH & MEDIA</span>
+              <span className="text-white font-bold tracking-widest">XTICH.COM</span>
+            </div>
           </motion.div>
 
-          <p className="mt-6 text-xs text-gray-500 tracking-wider">
-            Powering Web Bites · Team Dynamos
+          <p className="mt-8 text-xs text-gray-500 tracking-wider">
+            Web Bites &bull; Team Dynamos &bull; Stall No. 08 &bull; Davanagere
           </p>
         </motion.div>
       </div>
 
       {/* Bottom border */}
-      <div className="absolute bottom-0 inset-x-0 h-2 bg-gradient-to-r from-[#0066CC] via-[#E31E24] to-[#0066CC]" />
+      <div className="absolute bottom-0 inset-x-0 h-1.5 bg-gradient-to-r from-[#0066CC] via-[#E31E24] to-[#0066CC]" />
     </section>
   );
 }

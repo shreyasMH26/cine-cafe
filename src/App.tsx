@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CinematicIntro from "./components/CinematicIntro";
 import Hero from "./components/Hero";
 import MenuSection from "./components/MenuSection";
@@ -14,12 +14,40 @@ import ScrollSpider from "./components/ScrollSpider";
 import WebCursor from "./components/WebCursor";
 import { AnimatePresence, motion } from "framer-motion";
 
+// Routing and Admin Pages
+import { useNavigation } from "./hooks/useNavigation";
+import { initVisitorTracking } from "./utils/analytics";
+import AdminDashboard from "./pages/AdminDashboard";
+import CustomerRegistration from "./pages/CustomerRegistration";
+import FastRedeem from "./pages/FastRedeem";
+
 export default function App() {
+  const { currentPath, navigate } = useNavigation();
   const [introComplete, setIntroComplete] = useState(false);
 
+  // Initialize analytics visitor tracking for all page entries
+  useEffect(() => {
+    initVisitorTracking();
+  }, [currentPath]);
+
+  // Check if current route is an Admin portal page
+  const isAdminRoute = currentPath.startsWith("/admin");
+
+  if (isAdminRoute) {
+    if (currentPath === "/admin/customers") {
+      return <CustomerRegistration onNavigate={navigate} onLogout={() => navigate("/")} />;
+    }
+    if (currentPath === "/admin/redeem") {
+      return <FastRedeem onNavigate={navigate} />;
+    }
+    // Default admin fallback: Dashboard
+    return <AdminDashboard onNavigate={navigate} onLogout={() => navigate("/")} />;
+  }
+
+  // Public Event / Ticket Page
   return (
     <>
-      {/* Cinematic intro */}
+      {/* Cinematic intro (only plays on initial public entry) */}
       <CinematicIntro onComplete={() => setIntroComplete(true)} />
 
       {/* Web cursor / touch burst overlay */}
@@ -45,7 +73,7 @@ export default function App() {
             <TeamSection />
             <SponsorSection />
             <ContactSection />
-            <Footer />
+            <Footer onNavigate={navigate} />
           </motion.main>
         )}
       </AnimatePresence>
