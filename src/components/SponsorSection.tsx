@@ -29,47 +29,44 @@ export default function SponsorSection() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
         >
-          {/* Official Badge Header */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-950/60 border border-[#E31E24]/60 text-[#E31E24] rounded-full text-xs font-bold tracking-[0.3em] uppercase mb-4 shadow-[0_0_15px_rgba(227,30,36,0.2)]">
-            ★ OFFICIAL SPONSOR ★
+          {/* Creative Team Badge Header */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#0066CC]/20 border border-[#00AAFF]/50 text-[#00AAFF] rounded-full text-xs font-bold tracking-[0.3em] uppercase mb-4 shadow-[0_0_15px_rgba(0,170,255,0.2)]">
+            ✦ CREATIVE TEAM ✦
           </div>
 
           <h2 className="font-['Bebas_Neue',Impact,sans-serif] text-4xl sm:text-5xl tracking-[0.25em] text-white mb-2">
-            POWERED BY <span className="text-[#E31E24]">XTICH</span>
+            DESIGNED BY <span className="text-[#E31E24]">XTICH.</span>
           </h2>
           <p className="text-gray-400 text-xs tracking-widest uppercase mb-8">
-            Fueling The Ultimate Cinematic Feast Experience
+            Creative Direction, Visual Identity & Digital Experience
           </p>
 
-          {/* Official Logo Card from Physical Banner & Ticket */}
+          {/* Official Logo Card matching uploaded xtich asset */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.2, type: "spring", stiffness: 120 }}
             whileHover={{ scale: 1.04 }}
-            className="relative inline-block p-4 sm:p-6 bg-black rounded-xl border-2 border-[#E31E24] shadow-[0_0_35px_rgba(227,30,36,0.4)]"
+            className="relative inline-block p-6 sm:p-8 bg-white rounded-2xl border-2 border-[#E31E24] shadow-[0_0_40px_rgba(255,255,255,0.3)]"
           >
-            {/* Film strip edge decors */}
-            <div className="absolute top-1 left-2 right-2 h-1.5 flex justify-between opacity-30">
-              <span className="w-1.5 h-1.5 bg-white rounded-xs"></span>
-              <span className="w-1.5 h-1.5 bg-white rounded-xs"></span>
-              <span className="w-1.5 h-1.5 bg-white rounded-xs"></span>
-              <span className="w-1.5 h-1.5 bg-white rounded-xs"></span>
-              <span className="w-1.5 h-1.5 bg-white rounded-xs"></span>
-            </div>
+            {/* Corner accent details */}
+            <div className="absolute top-2 left-2 w-2 h-2 border-t-2 border-l-2 border-[#E31E24]" />
+            <div className="absolute top-2 right-2 w-2 h-2 border-t-2 border-r-2 border-[#E31E24]" />
+            <div className="absolute bottom-2 left-2 w-2 h-2 border-b-2 border-l-2 border-[#E31E24]" />
+            <div className="absolute bottom-2 right-2 w-2 h-2 border-b-2 border-r-2 border-[#E31E24]" />
 
-            <div className="my-2">
+            <div className="my-1 px-4">
               <img
-                src="/assets/xtich-official-card.png"
-                alt="XTICH Official Sponsor"
-                className="max-h-20 sm:max-h-24 w-auto object-contain mx-auto rounded drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]"
+                src="/assets/xtich-cropped-card.png"
+                alt="xtich. Creative Team"
+                className="max-h-16 sm:max-h-20 w-auto object-contain mx-auto"
                 loading="eager"
               />
             </div>
 
-            <div className="mt-3 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-gray-400 font-mono">
-              <span className="text-[#00AAFF]">✦ TECH & MEDIA</span>
-              <span className="text-white font-bold tracking-widest">XTICH.COM</span>
+            <div className="mt-4 pt-3 border-t border-gray-200 flex items-center justify-between text-[11px] text-gray-600 font-mono">
+              <span className="text-[#E31E24] font-bold">✦ CREATIVE TEAM</span>
+              <span className="text-black font-extrabold tracking-widest">XTICH.COM</span>
             </div>
           </motion.div>
 

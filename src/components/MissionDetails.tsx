@@ -3,7 +3,7 @@ import { motion, useInView } from "framer-motion";
 
 const details = [
   { label: "DATE", value: "10 OCTOBER 2026", icon: "📅" },
-  { label: "TIME", value: "3:00 PM – 5:00 PM", icon: "🕒" },
+  { label: "TIME", value: "1:00 PM – 5:00 PM", icon: "🕒" },
   {
     label: "LOCATION",
     value: "BAPUJI SAMUDAYA BHAVAN\nSHAMANUR ROAD\nDAVANAGERE",

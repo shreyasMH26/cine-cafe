@@ -146,7 +146,7 @@ export default function Hero() {
                   <span className="font-bold text-white">10 OCTOBER 2026</span>
                   <span className="text-gray-500">|</span>
                   <span className="text-[#00AAFF]">🕒 TIME:</span>
-                  <span className="font-bold text-white">3:00 PM – 5:00 PM</span>
+                  <span className="font-bold text-white">1:00 PM – 5:00 PM</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-[#E31E24]">📍 VENUE:</span>
@@ -175,16 +175,16 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Ticket Footer Strip - Official Sponsor XTICH Asset */}
+          {/* Ticket Footer Strip - Creative Team XTICH Asset */}
           <div className="mt-6 pt-5 border-t border-dashed border-white/20 flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <span className="text-[11px] font-bold tracking-[0.25em] text-[#E31E24] uppercase">
-                ★ OFFICIAL SPONSOR:
+              <span className="text-[11px] font-bold tracking-[0.25em] text-[#00AAFF] uppercase">
+                ★ CREATIVE TEAM:
               </span>
               <img
-                src="/assets/xtich-official-card.png"
-                alt="XTICH Official Sponsor"
-                className="h-8 sm:h-9 object-contain rounded drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]"
+                src="/assets/xtich-white-transp.png"
+                alt="xtich. creative team"
+                className="h-6 sm:h-7 object-contain drop-shadow-[0_0_12px_rgba(255,255,255,0.4)]"
               />
             </div>
 

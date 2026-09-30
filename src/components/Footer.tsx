@@ -20,7 +20,7 @@ export default function Footer({ onNavigate }: FooterProps) {
         </div>
         <p className="text-xs tracking-[0.35em] text-white/50 uppercase">SMALL BITES &bull; BIG BLOCKBUSTER</p>
         <p className="text-xs text-white/30 font-mono">
-          TEAM DYNAMOS &bull; STALL NO. 08 &bull; 10 OCTOBER 2026 &bull; 3:00 PM – 5:00 PM
+          TEAM DYNAMOS &bull; STALL NO. 08 &bull; 10 OCTOBER 2026 &bull; 1:00 PM – 5:00 PM
         </p>
         <p className="text-xs text-white/30 font-mono">
           BAPUJI SAMUDAYA BHAVAN, MCC B BLOCK, DAVANAGERE
@@ -37,10 +37,15 @@ export default function Footer({ onNavigate }: FooterProps) {
         <div className="w-12 h-px bg-[#0066CC]/30" />
       </div>
 
-      {/* Sponsor attribution */}
+      {/* Creative Team attribution */}
       <div className="mt-4 flex flex-col items-center justify-center gap-2">
-        <div className="text-[11px] text-white/40 tracking-widest uppercase">
-          ★ OFFICIAL SPONSOR: <span className="text-white font-bold">XTICH</span> ★
+        <div className="inline-flex items-center gap-2 text-[11px] text-white/60 tracking-widest uppercase">
+          <span>CREATIVE TEAM:</span>
+          <img
+            src="/assets/xtich-white-transp.png"
+            alt="xtich."
+            className="h-4 object-contain inline-block"
+          />
         </div>
         <p className="text-[10px] text-white/20 tracking-wider">
           © 2026 TEAM DYNAMOS &bull; ALL RIGHTS RESERVED
