@@ -181,11 +181,18 @@ export default function Hero() {
               <span className="text-[11px] font-bold tracking-[0.25em] text-[#00AAFF] uppercase">
                 ★ CREATIVE TEAM:
               </span>
-              <img
-                src="/assets/xtich-white-transp.png"
-                alt="xtich. creative team"
-                className="h-6 sm:h-7 object-contain drop-shadow-[0_0_12px_rgba(255,255,255,0.4)]"
-              />
+              <a
+                href="https://xtich.onrender.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity flex items-center"
+              >
+                <img
+                  src="/assets/xtich-white-transp.png"
+                  alt="xtich. creative team"
+                  className="h-6 sm:h-7 object-contain drop-shadow-[0_0_12px_rgba(255,255,255,0.4)]"
+                />
+              </a>
             </div>
 
             <div className="text-[11px] text-gray-400 font-mono tracking-wider">

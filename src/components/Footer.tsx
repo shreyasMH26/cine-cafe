@@ -39,14 +39,20 @@ export default function Footer({ onNavigate }: FooterProps) {
 
       {/* Creative Team attribution */}
       <div className="mt-4 flex flex-col items-center justify-center gap-2">
-        <div className="inline-flex items-center gap-2 text-[11px] text-white/60 tracking-widest uppercase">
+        <a
+          href="https://xtich.onrender.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 text-[11px] text-white/60 hover:text-white tracking-widest uppercase transition-colors group"
+        >
           <span>CREATIVE TEAM:</span>
           <img
             src="/assets/xtich-white-transp.png"
             alt="xtich."
-            className="h-4 object-contain inline-block"
+            className="h-4 object-contain inline-block group-hover:scale-105 transition-transform"
           />
-        </div>
+          <span className="text-[10px] text-[#00AAFF] font-mono lowercase">(xtich.onrender.com)</span>
+        </a>
         <p className="text-[10px] text-white/20 tracking-wider">
           © 2026 TEAM DYNAMOS &bull; ALL RIGHTS RESERVED
         </p>

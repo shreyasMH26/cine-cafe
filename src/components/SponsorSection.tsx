@@ -64,10 +64,17 @@ export default function SponsorSection() {
               />
             </div>
 
-            <div className="mt-4 pt-3 border-t border-gray-200 flex items-center justify-between text-[11px] text-gray-600 font-mono">
+            <a
+              href="https://xtich.onrender.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 pt-3 border-t border-gray-200 flex items-center justify-between text-[11px] text-gray-600 font-mono hover:text-[#E31E24] transition-colors"
+            >
               <span className="text-[#E31E24] font-bold">✦ CREATIVE TEAM</span>
-              <span className="text-black font-extrabold tracking-widest">XTICH.COM</span>
-            </div>
+              <span className="text-black font-extrabold tracking-wider font-mono hover:text-[#E31E24]">
+                xtich.onrender.com ↗
+              </span>
+            </a>
           </motion.div>
 
           <p className="mt-8 text-xs text-gray-500 tracking-wider">
